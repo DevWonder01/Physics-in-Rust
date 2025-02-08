@@ -35,24 +35,24 @@ fn gravitational_force(
     force_magnitude * force_direction
 }
 
-// #[cfg(test)]
-// mod tests {
-//     use super::*;
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-//     #[test]
-//     fn test_gravitational_force() {
-//         // Example: Two objects with masses 1 kg and 2 kg, separated by 1 meter
-//         let mass1 = 1.0;
-//         let mass2 = 2.0;
-//         let position1 = Point3::new(0.0, 0.0, 0.0);
-//         let position2 = Point3::new(1.0, 0.0, 0.0);
+    #[test]
+    fn test_gravitational_force() {
+        // Example: Two objects with masses 1 kg and 2 kg, separated by 1 meter
+        let mass1 = 1.0;
+        let mass2 = 2.0;
+        let position1 = Point3::new(0.0, 0.0, 0.0);
+        let position2 = Point3::new(1.0, 0.0, 0.0);
 
-//         let expected_force_magnitude = GRAVITATIONAL_CONSTANT * mass1 * mass2;
-//         let expected_force_direction = Vector3::new(1.0, 0.0, 0.0);
+        let expected_force_magnitude = GRAVITATIONAL_CONSTANT * mass1 * mass2;
+        let expected_force_direction = Vector3::new(1.0, 0.0, 0.0);
 
-//         let calculated_force = gravitational_force(mass1, mass2, &position1, &position2);
+        let calculated_force = gravitational_force(mass1, mass2, &position1, &position2);
 
-//         assert_eq!(calculated_force.magnitude(), expected_force_magnitude);
-//         assert_eq!(calculated_force.normalize(), expected_force_direction);
-//     }
-// }
+        assert_eq!(calculated_force.magnitude(), expected_force_magnitude);
+        assert_eq!(calculated_force.normalize(), expected_force_direction);
+    }
+}
