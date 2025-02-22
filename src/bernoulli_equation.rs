@@ -18,7 +18,30 @@ fn bernoulli_equation(fluid_density: f64, point1: FluidPoint, point2: FluidPoint
     (bernoulli_constant1 - bernoulli_constant2).abs() < TOLERANCE
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
 
+    #[test]
+    fn test_bernoulli_equation_valid() {
+        // Example: Water flowing in a horizontal pipe (height remains constant)
+        let fluid_density = 1000.0; // kg/m^3 (density of water)
+        let point1 = FluidPoint { pressure: 100000.0, velocity: 2.0, height: 0.0 };
+        let point2 = FluidPoint { pressure: 99800.0, velocity: 2.2, height: 0.0 };
+
+        assert!(bernoulli_equation(fluid_density, point1, point2)); 
+    }
+
+    #[test]
+    fn test_bernoulli_equation_invalid() {
+        // Example: Inconsistent values for Bernoulli's equation
+        let fluid_density = 1000.0; 
+        let point1 = FluidPoint { pressure: 100000.0, velocity: 2.0, height: 0.0 };
+        let point2 = FluidPoint { pressure: 90000.0, velocity: 1.0, height: 5.0 }; 
+
+        assert!(!bernoulli_equation(fluid_density, point1, point2)); 
+    }
+}
 
 fn main() {
     let fluid_density = 1000.0; 
